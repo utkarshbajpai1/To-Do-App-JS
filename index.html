@@ -38,7 +38,17 @@
 					done : document.getElementById("done")	
 				};	
 
-				
+				var makeTaskHtml = function(str){
+					var el = document.createElement("li");
+					var t  = document.createTextNode(str);
+
+					el.appendChild(t);	
+					return el;	
+				};
+
+				 lists.todo.appendChild(makeTaskHtml(" helloo "));
+				//lists.todo.appendChild(" This ones work without declaration .....");
+
 			}());
 		</script>
 	</body>
