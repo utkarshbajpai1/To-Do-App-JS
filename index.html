@@ -46,7 +46,14 @@
 					return el;	
 				};
 
-				 lists.todo.appendChild(makeTaskHtml(" helloo "));
+				var addTask = function(list, task){
+
+					list.appendChild(task);
+				};
+
+				addTask(lists.todo, makeTaskHtml(" This is the task "));
+
+
 				//lists.todo.appendChild(" This ones work without declaration .....");
 
 			}());
