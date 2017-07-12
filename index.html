@@ -39,12 +39,15 @@
 					done : document.getElementById("done")	
 				};	
 
-				var makeTaskHtml 	= function(str){
+				
+
+				var makeTaskHtml 	= function(str, onCheck){
 					var el 		 	= document.createElement("li");
 					var checkbox 	= document.createElement("input");
 					var label 		= document.createElement("span");
 
 					checkbox.type 	   = "checkbox";
+					checkbox.addEventListener("click", onCheck, false);
 					label.textContent  = str;		
  					
 					el.appendChild(checkbox);	
@@ -52,13 +55,19 @@
 					return el;	
 				};
 
+				var onCheck = function(event){
+					var task = event.target.parentNode;
+					lists.done.appendChild(a);
+						
+				};
+
 				var addTask = function(list, task){
 
 					list.appendChild(task);
 				};
 
-				addTask(lists.todo, makeTaskHtml(" To-Do-Task "));
-				addTask(lists.done, makeTaskHtml(" Done-Task "));
+				addTask(lists.todo, makeTaskHtml(" To-Do-Task ", onCheck));
+				addTask(lists.done, makeTaskHtml(" Done-Task ", onCheck));
 
 
 				//lists.todo.appendChild(" This ones work without declaration .....");
