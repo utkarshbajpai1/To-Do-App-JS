@@ -56,9 +56,14 @@
 				};
 
 				var onCheck = function(event){
-					var task = event.target.parentNode;
-					lists.done.appendChild(a);
-						
+					var task = event.target.parentNode; // gives li element
+					//lists.done.appendChild(a);
+
+					var list = task.parentNode.id;
+					lists[list === 'todo' ? 'done' : 'todo'].appendChild(task);
+					this.checked = false;
+
+
 				};
 
 				var addTask = function(list, task){
