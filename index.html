@@ -20,12 +20,12 @@
 		<input type="text" id="input" name="input">
 		<button id="btn"> ADD </button>
 		<hr>
-
+		
 		<ul id="todo">
-			
+			<h1> To-Do </h1>
 		</ul>
 		<ul id="done">
-				
+				<h1> Done </h1>
 		</ul>	
 
 		<script>
@@ -66,13 +66,35 @@
 
 				};
 
-				var addTask = function(list, task){
+				var addTask = function(task){
 
-					list.appendChild(task);
+					lists.todo.appendChild(task);
 				};
 
-				addTask(lists.todo, makeTaskHtml(" To-Do-Task ", onCheck));
-				addTask(lists.done, makeTaskHtml(" Done-Task ", onCheck));
+				//addTask(lists.todo, makeTaskHtml(" To-Do-Task ", onCheck));
+				//addTask(lists.done, makeTaskHtml(" Done-Task ", onCheck));
+
+				var onInput    = function(event){
+					var str    = input.value.trim();
+					if (str.length > 0) {
+						addTask(makeTaskHtml(str, onCheck));
+						input.value = '';
+						input.focus();	
+					}
+
+					
+				};
+
+				btn.addEventListener('click', onInput, false);
+				
+				input.addEventListener('keyup', function(event){
+					var code = event.keyCode;
+					if ( code === 13 ) {
+						onInput();
+					}
+				});
+				
+				
 
 
 				//lists.todo.appendChild(" This ones work without declaration .....");
